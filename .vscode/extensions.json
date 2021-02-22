@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "octref.vetur",
+    "hollowtree.vue-snippets",
+    "dariofuzinato.vue-peek",
+    "znck.vue-language-features",
+    "waderyan.nodejs-extension-pack"
+  ]
+}

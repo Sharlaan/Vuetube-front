@@ -1,57 +1,69 @@
 {
-  "name": "vuetube",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vuetube-front",
+  "version": "2.0.0",
+  "description": "Youtube Client clone",
+  "keywords": [
+    "youtube",
+    "es6",
+    "typescript",
+    "vite",
+    "esbuild"
+  ],
+  "author": "Raphaël Morineau <raphael.morineau@gmail.com>",
+  "license": "MIT",
+  "repository": "git@github.com:Sharlaan/Vuetube-front.git",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite --open",
+    "build": "vuedx-typecheck . && vite build",
+    "lint": "eslint --fix --ext ts src && stylelint --fix \"**/*.{vue,css}\""
+  },
+  "engines": {
+    "node": ">= 12"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "core-js": "^3.6.4",
-    "moment": "^2.24.0",
-    "vee-validate": "^3.2.5",
-    "vue": "^2.6.11",
-    "vue-image-crop-upload": "^2.5.0",
-    "vue-infinite-loading": "^2.4.5",
-    "vue-router": "^3.1.6",
-    "vuebar": "0.0.20",
-    "vuetify": "^2.2.11",
-    "vuex": "^3.1.3"
+    "date-fns": "^2.17.0",
+    "element-plus": "^1.0.2-beta.32",
+    "vee-validate": "^4.1.19",
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.4",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.3.0",
-    "@vue/cli-plugin-eslint": "^4.3.0",
-    "@vue/cli-plugin-router": "^4.3.0",
-    "@vue/cli-plugin-vuex": "^4.3.0",
-    "@vue/cli-service": "^4.3.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.19.0",
-    "sass-loader": "^8.0.0",
-    "vue-cli-plugin-vuetify": "^2.0.5",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.3.0"
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vuedx/typecheck": "^0.6.3",
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
+    "autoprefixer": "^10.2.4",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.6.0",
+    "husky": "^4.x",
+    "lint-staged": "^10.5.4",
+    "postcss-calc": "^8.0.0",
+    "postcss-import": "^14.0.0",
+    "postcss-nested": "^5.0.3",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-simple-vars": "^6.0.3",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.11.0",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^4.1.5",
+    "vite": "^2.0.1"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "yarn lint"
+    ]
+  }
 }
