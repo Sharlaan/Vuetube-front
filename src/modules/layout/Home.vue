@@ -31,7 +31,9 @@ import Sidebar from './Sidebar.vue';
 
 export default defineComponent({
   name: 'Home',
+
   components: { PageHeader, Footer, Header, Sidebar },
+
   setup() {
     const item = {
       date: '2016-05-02',

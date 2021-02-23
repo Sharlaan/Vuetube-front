@@ -58,6 +58,7 @@ import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'Sidebar',
+
   setup(props, { emit }) {
     const store = useStore();
 

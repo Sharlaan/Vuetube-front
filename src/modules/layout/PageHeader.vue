@@ -15,7 +15,9 @@ import Breadcrumb from './Breadcrumb.vue';
  */
 export default defineComponent({
   name: 'PageHeader',
+
   components: { Breadcrumb },
+
   setup() {
     const goBack = () => console.log('go back');
 
