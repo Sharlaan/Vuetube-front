@@ -15,7 +15,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-@import '../../theme-colors';
+@import '../../styles/colors';
 
 .el-footer {
   background-color: $black;

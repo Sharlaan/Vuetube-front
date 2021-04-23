@@ -1,6 +1,6 @@
 import { COMMENT_URL } from '../endpoints';
 import { Comment, CommentPayload, NewCommentId } from '../interfaces/comment.interfaces';
-import { QueryParams } from './api.interfaces';
+import { HTTPMethod, QueryParams } from './api.interfaces';
 import useFetch from './_useFetch';
 
 export class CommentService {
@@ -12,7 +12,7 @@ export class CommentService {
     return useFetch<NewCommentId>({
       endpoint: COMMENT_URL,
       options: {
-        method: 'POST',
+        method: HTTPMethod.POST,
         body: JSON.stringify(payload),
       },
     });
@@ -22,7 +22,7 @@ export class CommentService {
     return useFetch<void>({
       endpoint: `${COMMENT_URL}/${commentId}`,
       options: {
-        method: 'PATCH',
+        method: HTTPMethod.PATCH,
         body: JSON.stringify(payload),
       },
     });
@@ -31,7 +31,7 @@ export class CommentService {
   static remove(commentId: Comment['id']) {
     return useFetch<void>({
       endpoint: `${COMMENT_URL}/${commentId}`,
-      options: { method: 'DELETE' },
+      options: { method: HTTPMethod.DELETE },
     });
   }
 }

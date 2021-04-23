@@ -1,17 +1,16 @@
 import { useStore } from 'vuex';
-import { AuthState } from '../pages/auth/auth.store';
+import { AuthState } from '../modules/auth/auth.store';
 import { RootState } from '../store';
 import { FetchData, QueryParams } from './api.interfaces';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Native Fetch extended with
  * auth, global loading, query params and generic typings
  *
- * check SWRV: more advanced alternative
+ * check SWRV: more advanced alternative (caching, ...)
  */
-
-const API_URL = import.meta.env.VITE_API_URL;
-
 export default async function useFetch<R>({
   endpoint,
   params,
@@ -23,7 +22,13 @@ export default async function useFetch<R>({
 
   store.commit('isLoading', true);
 
-  const response = await fetch(url, { ...defaultHeaders(isPublic), ...options });
+  const response = await fetch(url, {
+    ...defaultHeaders(isPublic),
+    ...options,
+    // Nice idea to factorize 'JSON.stringify' out from requests,
+    // but too much trouble to type options.body as RequestInit.BodyInit
+    // ...(options?.body ? { body: JSON.stringify(options.body) } : {}),
+  });
 
   store.commit('isLoading', false);
 
@@ -35,11 +40,11 @@ export default async function useFetch<R>({
 function defaultHeaders(isPublic: boolean): RequestInit {
   const store = useStore<AuthState>();
   const headers = new Headers();
-  headers.set('Content-Type', 'application/json');
+  headers.set('Content-Type', 'application/json'); // add charset if managing non-utf8 languages
   if (!isPublic) {
     const token = store.state.token;
     if (!token) throw new Error('You are trying to reach a secured endpoint without token');
-    headers.set('Content-Type', `Bearer ${token}`);
+    headers.set('Authorization', `Bearer ${token}`);
     store.dispatch('');
   }
   return { headers };

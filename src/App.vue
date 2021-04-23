@@ -18,9 +18,8 @@ export default defineComponent({
 </script>
 
 <style lang="postcss">
-@import './theme-colors';
-
-$search-height: 40px;
+@import './styles/colors';
+@import './styles/measures';
 
 /* GLOBAL STYLES */
 
@@ -54,8 +53,8 @@ p {
 }
 
 .search .el-input__inner {
-  height: $search-height;
-  border-radius: calc($search-height / 2);
+  height: $field-height;
+  border-radius: calc($field-height / 2);
 }
 
 .el-page-header__content {

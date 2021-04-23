@@ -77,7 +77,7 @@ export default defineComponent({
       error,
     });
 
-    const onSubmit = (event) => {
+    const onSubmit = (event: FormData) => {
       console.log({ event });
       authStore.dispatch('signIn', model);
     };
@@ -127,13 +127,8 @@ export default defineComponent({
 });
 </script>
 
-<style>
-@import '../../theme-colors';
-@mixin inner {
-  width: 95%;
-  max-width: 22rem;
-  margin: 0 auto;
-}
+<style lang="postcss">
+@import '../../styles/colors';
 
 .login {
   flex: 1;

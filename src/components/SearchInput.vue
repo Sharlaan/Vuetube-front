@@ -66,10 +66,10 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="postcss">
-@import '../theme-colors';
+<style lang="postcss" scoped>
+@import '../styles/measures';
 
 .search-input {
-  height: $search-height;
+  height: $field-height;
 }
 </style>

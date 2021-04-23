@@ -17,7 +17,7 @@
         <el-button v-if="!isAuthenticated" plain round class="login"> login </el-button>
         <el-dropdown v-else>
           <el-avatar icon="el-icon-user-solid">
-            <img :src="avatar" >
+            <img :src="avatar" />
           </el-avatar>
           <template #dropdown>
             <el-dropdown-menu>
@@ -42,7 +42,7 @@ export default defineComponent({
 
   components: { SearchInput },
 
-  setup(props, { emit }) {
+  setup() {
     const store = useStore();
     const user = store.state.auth.user;
 
@@ -59,7 +59,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-@import '../../theme-colors';
+@import '../../styles/colors';
 
 .el-header {
   background-color: $gray-lighter;

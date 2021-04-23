@@ -1,6 +1,6 @@
 import { VIDEO_URL } from '../endpoints';
 import { NewVideoId, Video, VideoPayload } from '../interfaces/video.interfaces';
-import { QueryParams } from './api.interfaces';
+import { HTTPMethod, QueryParams } from './api.interfaces';
 import useFetch from './_useFetch';
 
 export class VideoService {
@@ -17,7 +17,7 @@ export class VideoService {
     return useFetch<NewVideoId>({
       endpoint: VIDEO_URL,
       options: {
-        method: 'POST',
+        method: HTTPMethod.POST,
         body: JSON.stringify(payload),
       },
     });
@@ -28,7 +28,7 @@ export class VideoService {
     return useFetch<void>({
       endpoint: `${VIDEO_URL}/${videoId}`,
       options: {
-        method: 'PATCH',
+        method: HTTPMethod.PATCH,
         body: JSON.stringify(payload),
       },
     });
@@ -37,7 +37,7 @@ export class VideoService {
   static remove(videoId: Video['id']) {
     return useFetch<void>({
       endpoint: `${VIDEO_URL}/${videoId}`,
-      options: { method: 'DELETE' },
+      options: { method: HTTPMethod.DELETE },
     });
   }
 }

@@ -1,5 +1,6 @@
 import { AUTH_URL } from '../../endpoints';
 import { NewUserId, User, UserPayload } from '../../interfaces/user.interfaces';
+import { HTTPMethod } from '../../services/api.interfaces';
 import useFetch from '../../services/_useFetch';
 import { LoginPayload, Token } from './auth.interfaces';
 
@@ -8,7 +9,7 @@ export class AuthService {
     return useFetch<Token>({
       endpoint: `${AUTH_URL}/login`,
       options: {
-        method: 'POST',
+        method: HTTPMethod.POST,
         body: JSON.stringify(credentials),
       },
       isPublic: true,
@@ -19,7 +20,7 @@ export class AuthService {
     return useFetch<NewUserId>({
       endpoint: `${AUTH_URL}/register`,
       options: {
-        method: 'POST',
+        method: HTTPMethod.POST,
         body: JSON.stringify(payload),
       },
       isPublic: true,
@@ -39,7 +40,7 @@ export class AuthService {
     return useFetch<void>({
       endpoint: `${AUTH_URL}/user/${userId}`,
       options: {
-        method: 'PATCH',
+        method: HTTPMethod.PATCH,
         body: JSON.stringify(payload),
       },
     });
@@ -50,7 +51,7 @@ export class AuthService {
   //   return fetchData<any>({
   //     endpoint: `${AUTH_URL}/avatar`,
   //     options: {
-  //       method: 'PATCH',
+  //       method: HTTPMethod.PATCH,
   //       body: JSON.stringify(payload)
   //     }
   //   });
@@ -61,7 +62,7 @@ export class AuthService {
   //   return fetchData<any>({
   //     endpoint: `${AUTH_URL}/updatepassword`,
   //     options: {
-  //       method: 'PATCH',
+  //       method: HTTPMethod.PATCH,
   //       body: JSON.stringify(payload)
   //     }
   //   });
